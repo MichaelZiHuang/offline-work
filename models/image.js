@@ -69,5 +69,4 @@ exports.updateImageSizeById = async function (id, size) {
       { $set: { "metadata.size": size }}
     );
     return result.matchedCount > 0;
-  }
-};
+  }};

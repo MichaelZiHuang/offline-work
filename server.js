@@ -56,10 +56,8 @@ app.post('/images', upload.single('image'), async (req, res, next) => {
       };
       const id = await saveImageFile(image);
       await removeUploadedFile(req.file);
-
       const channel = getChannel();
       channel.sendToQueue('images', Buffer.from(id.toString()));
-
       res.status(200).send({ id: id });
     } catch (err) {
       next(err);
